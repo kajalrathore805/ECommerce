@@ -1,4 +1,13 @@
+
+<p><%= @user.role%></p>
 <p><%= @user.full_name %></p>
 <p><%= @user.email %></p>
 <p><%= @user.password %></p>
 <p><%= @user.phone %></p>
+<ul>
+<li><%= link_to "Edit" , edit_user_path(@user)%></li>
+<li><%= link_to "Delete" , user_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+                </ul>
