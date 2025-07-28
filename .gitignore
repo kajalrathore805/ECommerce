@@ -1,0 +1,13 @@
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/.bundle/
+/node_modules/
+/yarn-error.log
+.byebug_history
+.env
+
