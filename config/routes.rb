@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
- root "stores#index"
-# resources :users
+ # root "users#index"
+ resources :users
+ resources :session
  resources :stores
 end

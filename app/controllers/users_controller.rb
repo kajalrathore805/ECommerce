@@ -1,22 +1,21 @@
 class UsersController < ApplicationController
 	def index
-	@users = User.all
+		@users = User.all
 	end
 
 	def show
-	@user = User.find(params[:id])
+		@user = User.find(params[:id])
 	end
 
 	def new
 		@user = User.new
-		render :_user_registration
 	end	
 
 	def create
 		@user = User.new(user_params)
 
 		if @user.save
-			redirect_to @user , notice: "Account created successfully!"
+			redirect_to user_path(@user) , notice: "Account created successfully!"
 		else 
 			render :new
 		end

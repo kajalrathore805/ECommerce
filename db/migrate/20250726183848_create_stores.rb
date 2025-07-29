@@ -3,7 +3,7 @@ class CreateStores < ActiveRecord::Migration[7.2]
     create_table :stores do |t|
       t.string :name
       t.string :description
-	  t.references :seller, foreign_key: { to_table: :users }
+	    t.references :seller, foreign_key: { to_table: :users }
 
       t.timestamps
     end
