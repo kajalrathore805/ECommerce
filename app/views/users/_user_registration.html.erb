@@ -6,7 +6,7 @@
 <%= form_with  model: @user  do |form|%>
 
 	<div class="mb-3 col-sm-4">
-		<%= form.select :role, ["Buyer", "Seller"] ,class: "form-control" %>
+		<%= form.select :type, ["Buyer", "Seller"] ,class: "form-control" %>
 	</div>
 
 	<div class="mb-3 col-sm-4">
