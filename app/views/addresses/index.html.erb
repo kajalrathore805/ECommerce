@@ -1,0 +1,8 @@
+<ul>
+	<% @addresses.each do |address|%>
+		<li>
+	    <%= link_to address.address_line, address %> 
+	  </li>
+	<% end %> 
+</ul>
+<%= link_to "new", new_address_path%> 

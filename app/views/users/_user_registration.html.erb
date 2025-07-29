@@ -2,10 +2,11 @@
 <div class="mt-3 container">
 
 
-<h2 class="text-dark">Registration form </h2>
+<h2 class="text-dark">Edit Registration form </h2>
 <%= form_with  model: @user  do |form|%>
 
 	<div class="mb-3 col-sm-4">
+		<%= form.label :type%>
 		<%= form.select :type, ["Buyer", "Seller"] ,class: "form-control" %>
 	</div>
 

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
  resources :users
  resources :session
  resources :stores
+ resources :addresses
 end
