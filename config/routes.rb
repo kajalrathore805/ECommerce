@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
  # root "users#index"
- resources :users
- resources :session
- resources :stores
- resources :addresses
+ resources :users , :session , :stores , :addresses , :products ,:product_variations ,:product_skus
 end

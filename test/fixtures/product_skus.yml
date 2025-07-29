@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: MyString
+  sku_code: MyString
+  product_variation: one
+
+two:
+  size: MyString
+  sku_code: MyString
+  product_variation: two

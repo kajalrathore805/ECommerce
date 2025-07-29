@@ -1,0 +1,8 @@
+<ul>
+	<% @product_skus.each do |product_sku|%>
+		<li>
+	    <%= link_to product_sku.sku_code, product_sku %> 
+	  </li>
+	<% end %> 
+</ul>
+<%= link_to "new", new_product_sku_path%> 

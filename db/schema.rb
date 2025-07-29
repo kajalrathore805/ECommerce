@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_29_070455) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_29_122849) do
   create_table "addresses", force: :cascade do |t|
     t.string "address_line"
     t.string "city"
@@ -58,6 +58,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_29_070455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+  end
+
+  create_table "product_skus", force: :cascade do |t|
+    t.string "size"
+    t.string "sku_code"
+    t.integer "product_variation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_variation_id"], name: "index_product_skus_on_product_variation_id"
   end
 
   create_table "product_variations", force: :cascade do |t|
@@ -111,6 +120,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_29_070455) do
   add_foreign_key "carts", "buyers"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "buyers"
+  add_foreign_key "product_skus", "product_variations"
   add_foreign_key "product_variations", "products"
   add_foreign_key "products", "stores"
   add_foreign_key "products", "sub_categories"

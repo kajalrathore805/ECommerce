@@ -1,0 +1,2 @@
+module ProductSkusHelper
+end

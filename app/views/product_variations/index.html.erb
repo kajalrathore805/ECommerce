@@ -1,0 +1,8 @@
+<ul>
+	<% @product_variations.each do |product_variation|%>
+		<li>
+	    <%= link_to product_variation.color, product_variation %> 
+	  </li>
+	<% end %> 
+</ul>
+<%= link_to "new", new_product_variation_path%> 

@@ -1,0 +1,17 @@
+
+
+<h2>Product Sku Details</h2>
+<ul>
+<li><%= @product_sku.size %></li>
+<li><%= @product_sku.sku_code %></li>
+<li><%= @product_sku.product_variation_id %></li>
+
+
+
+<ul>
+<li><%= link_to "Edit" , edit_product_sku_path(@product_sku)%></li>
+<li><%= link_to "Delete" , product_sku_path(@product_sku), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+                </ul>
