@@ -38,11 +38,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.destroy
 
-		redirect_to root_path
+		redirect_to users_path
 	end
 
 	private
   def user_params
-    params.require(:user).permit(:type , :full_name , :email ,:password , :phone)
+    params.require(:user).permit(:type , :full_name , :email ,:password_digest , :phone , :image)
   end
 end

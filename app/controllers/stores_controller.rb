@@ -38,7 +38,7 @@ class StoresController < ApplicationController
 		@store = Store.find(params[:id])
 		@store.destroy
 
-		redirect_to @store
+		redirect_to stores_path
 	end
 
 	private

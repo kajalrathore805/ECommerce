@@ -1,11 +1,10 @@
 <ul>
-<li><%= @address.addressable_id %></li>
-<li><%= @address.addressable_type %></li>
-<li><%= @address.address_line %></li>
-<li><%= @address.city %></li>
-<li><%= @address.state %></li>
-<li><%= @address.pincode %></li>
-
+  <li><%= @address.addressable_id %></li>
+  <li><%= @address.addressable_type %></li>
+  <li><%= @address.address_line %></li>
+  <li><%= @address.city %></li>
+  <li><%= @address.state %></li>
+  <li><%= @address.pincode %></li>
 <ul>
 <li><%= link_to "Edit" , edit_address_path(@address)%></li>
 <li><%= link_to "Delete" , address_path(@address), data: {

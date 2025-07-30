@@ -1,13 +1,37 @@
 
-<p><%= @user.type%></p>
-<p><%= @user.full_name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.password %></p>
-<p><%= @user.phone %></p>
-<ul>
-<li><%= link_to "Edit" , edit_user_path(@user)%></li>
-<li><%= link_to "Delete" , user_path(@user), data: {
+<div class="container d-flex justify-content-center mt-5">
+  <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
+    <h2 class="text-dark mb-4 text-center">Welcome <%= @user.full_name %> </h2>
+      <%= form_with  do |form|%>
+
+        <div class="mb-3 text-center">
+          <% if @user.image.attached?%>
+          <%= image_tag @user.image , class: "rounded-circle w-25"%>
+          <% end %>
+        </div>
+
+        <div class="mb-3 text-center">
+          <%= form.label "type:"%>
+          <%= @user.type%>
+        </div>
+
+        <div class="mb-3 text-center">
+        <%= form.label "email:"%>
+        <%= @user.email %>
+        </div>
+
+        <div class="mb-3 text-center">
+          <%= form.label "phone:"%>
+          <%= @user.phone %>
+        </div>
+
+        <ul class="list-inline text-center">
+          <li class="list-inline-item"><%= link_to "Edit" , edit_user_path(@user),class: "btn btn-secondary inline"%></li>
+          <li class="list-inline-item"><%= link_to "Delete" , user_path(@user), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
+                  } ,class: "btn btn-secondary" %></li>
                 </ul>
+      <% end %>
+  </div>
+</div>

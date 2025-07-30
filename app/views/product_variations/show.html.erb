@@ -1,13 +1,10 @@
 
 
 <h2>Product variation Details</h2>
-<ul>
-<li><%= @product_variation.color %></li>
-<li><%= @product_variation.product_id %></li>
-
-
-
-<ul>
+  <ul>
+    <li><%= @product_variation.color %></li>
+    <li><%= @product_variation.product_id %></li>
+  <ul>
 <li><%= link_to "Edit" , edit_product_variation_path(@product_variation)%></li>
 <li><%= link_to "Delete" , product_variation_path(@product_variation), data: {
                     turbo_method: :delete,
