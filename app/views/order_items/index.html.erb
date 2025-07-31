@@ -1,0 +1,10 @@
+
+<ul>
+	<% @order_items.each do |order_item|%>
+		<li>
+	    <%= link_to order_item.price, order_item %> 
+	  </li>
+	<% end %> 
+</ul>
+<%= link_to "new", new_order_item_path%> 
+	

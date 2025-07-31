@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_30_054629) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_31_132851) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,13 +55,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_30_054629) do
     t.integer "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_item_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["order_item_id"], name: "index_cart_items_on_order_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "buyer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buyer_id"
     t.index ["buyer_id"], name: "index_carts_on_buyer_id"
   end
 
@@ -77,14 +79,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_30_054629) do
     t.integer "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "total_amount"
+    t.integer "product_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "status"
-    t.integer "buyer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -147,9 +152,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_30_054629) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "carts", "buyers"
+  add_foreign_key "cart_items", "order_items"
+  add_foreign_key "carts", "users", column: "buyer_id"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "buyers"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "product_skus", "product_variations"
   add_foreign_key "product_variations", "products"
   add_foreign_key "products", "stores"

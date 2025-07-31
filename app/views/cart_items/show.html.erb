@@ -1,0 +1,11 @@
+
+
+<h2>Show Cart Items</h2>
+<p>Cart Id :  <%= @cart_item.cart_id%></p>
+
+<% if @cart_item.order_item.present? %>
+  <p>Quantity: <%= @cart_item.order_item.quantity %></p>
+<% else %>
+  <p>Order item not found</p>
+<% end %>
+<p>Order Item Id :  <%= @cart_item.order_item_id%></p>
