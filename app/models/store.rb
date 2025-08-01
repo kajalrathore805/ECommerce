@@ -3,5 +3,5 @@ class Store < ApplicationRecord
 
   validates :name , :description , presence: true
 
-  has_many :products
+  has_many :products , dependent: :destroy
 end

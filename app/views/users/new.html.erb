@@ -1,10 +1,20 @@
  
-
- 
 	<div class="container d-flex justify-content-center mt-5">
 	  <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
 	    <h2 class="text-dark mb-4 text-center">Registration form</h2>
 				<%= form_with  model: @user  do |form|%>
+
+
+					<% if @user.errors.any? %>
+	        <div id="error_explanation" class="alert alert-danger">
+	          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	          <ul>
+	            <% @user.errors.full_messages.each do |message| %>
+	              <li><%= message %></li>
+	            <% end %>
+	          </ul>
+	        </div>
+	      	<% end %>
 
 					<div class="mb-3">
 						<%= form.label :type%>
@@ -14,26 +24,51 @@
 					<div class="mb-3">
 						<%= form.label :full_name%>
 						<%= form.text_field :full_name,class: "form-control"%>
+						<% @user.errors.full_messages_for(:full_name).each do |message| %>
+
+      			<div><%=  message %></div>
+    				<% end %>
 					</div>
 
 					<div class="mb-3">
 					<%= form.label :email%>
 					<%= form.email_field :email,class: "form-control"%>
+					<% @user.errors.full_messages_for(:email).each do |message| %>
+      			<div><%= message %></div>
+    			<% end %>
 					</div>
 
 					<div class="mb-3">
-						<%= form.label :password_digest%>
-						<%= form.password_field :password_digest,class: "form-control"%>
+						<%= form.label :password%>
+						<%= form.password_field :password,class: "form-control"%>
+						<% @user.errors.full_messages_for(:password).each do |message| %>
+      			<div><%= message %></div>
+    				<% end %>
 					</div>
+
+					<div class="mb-3">
+						<%= form.label :confirm_password%>
+						<%= form.password_field :password_confirmation,class: "form-control"%>
+						<% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+      			<div><%= message %></div>
+    				<% end %>
+					</div>
+
 
 					<div class="mb-3">
 						<%= form.label :phone%>
 						<%= form.number_field :phone ,class: "form-control" %>
+						<% @user.errors.full_messages_for(:phone).each do |message| %>
+      			<div><%= message %></div>
+    				<% end %>
 					</div>
 
 					<div class="mb-3">
 						<%= form.label :image %>
 	      		<%= form.file_field :image %>
+	      		<% @user.errors.full_messages_for(:image).each do |message| %>
+      			<div><%= message %></div>
+    				<% end %>
 					</div>
 
 				  <div class="mb-3">

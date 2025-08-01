@@ -1,3 +1,29 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#">ECOMMERCE</a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/users/new">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/session/new">Login</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+</nav>
  
 <div class="container d-flex justify-content-center mt-5">
   <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
@@ -10,10 +36,10 @@
 					<%= form.label :email%>
 					<%= form.email_field :email,class: "form-control"%>
 				</div>
-
-				<div class="mb-3">
-					<%= form.label :password_digest%>
-					<%= form.password_field :password_digest,class: "form-control"%>
+        <%# <%= f.hidden_field :user_id, value: current_user.id %> 
+        				<div class="mb-3">
+					<%= form.label :password%>
+					<%= form.password_field :password,class: "form-control"%>
 				</div>
 
 			  <div class="mb-3 col-sm-4">

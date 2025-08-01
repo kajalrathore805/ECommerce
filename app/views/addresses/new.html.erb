@@ -8,27 +8,27 @@
 					<%= form.collection_select :addressable_id, User.order(:full_name) , :id,:full_name%>
 				</div>
 
-				<div class="mb-3 col-sm-4">
+				<div class="mb-3">
 					<%= form.label :addressable_type%>
 					<%= form.select :addressable_type,['Buyer','Seller']%>
 				</div>
 				
-				<div class="mb-3 col-sm-4">
+				<div class="mb-3">
 					<%= form.label :address_line%>
 					<%= form.text_field :address_line,class: "form-control"%>
 				</div>
 
-				<div class="mb-3 col-sm-4">
+				<div class="mb-3">
 					<%= form.label :city%>
 					<%= form.text_field :city,class: "form-control"%>
 				</div>
 
-				<div class="mb-3 col-sm-4">
+				<div class="mb-3">
 					<%= form.label :state%>
 					<%= form.text_field :state,class: "form-control"%>
 				</div>
 
-				<div class="mb-3 col-sm-4">
+				<div class="mb-3">
 					<%= form.label :pincode%>
 					<%= form.number_field :pincode,class: "form-control"%>
 				</div>
