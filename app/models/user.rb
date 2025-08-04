@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	has_secure_password
-	has_many :stores , dependent: :destroy
+	has_many :stores ,  dependent: :destroy
 	validates :type,:full_name,:email,:password,:phone, presence: true
 	
  	before_validation :normalize_name, on: :create
@@ -27,3 +27,4 @@ class User < ApplicationRecord
       self.full_name = full_name.capitalize
     end
 end
+

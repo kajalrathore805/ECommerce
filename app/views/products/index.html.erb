@@ -36,7 +36,7 @@
                     <h3><%= product.name%></h3>
                     <p><%= product.description%></p>
                     <span class="price"><%= product.price%></span>
-                    <%= button_to "Add to Cart", new_cart_item_path(product_id: product.id), method: :get %>
+                    <%= button_to "Add to Cart",  cart_items_path(product_id: product.id), method: :post %>
                 </div>
                 <% end %>
             </div>

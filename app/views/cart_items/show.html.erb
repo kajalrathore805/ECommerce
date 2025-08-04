@@ -1,8 +1,16 @@
 
-<h3>Cart Items</h3>
 
-<% @cart_items.each do |item|%>
-<%= item.quantity%>
-<%= @current_user%>
-<%= item.product_id %>
-<% end %>
+
+
+
+<h3>Cart Items</h3>
+<ul>
+<li>Quantity: <%= @cart_item.quantity%></li>
+ <li>Buyer id : <%= @cart_item.buyer_id %></li> 
+ <li>Product id : <%= @cart_item.product_id %> </li>
+ <li><%= link_to "Edit" , edit_cart_item_path(@cart_item)%></li>
+<li><%= link_to "Delete" , cart_item_path(@cart_item), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

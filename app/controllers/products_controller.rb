@@ -8,15 +8,15 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
-	if @current_user == "Seller"
+	
 		def new 
 			@product = Product.new
 		end	
-	end
 	
 	def create
 
 		@product = Product.new(product_params)
+
 		if @product.save
 			redirect_to @product
 		else 
