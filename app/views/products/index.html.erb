@@ -1,12 +1,64 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my Website</title>
+    <%= stylesheet_link_tag "home_index" %>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/home/index">ECommerce</a>
+            </div>
+            <ul>
+                <li><a href="/home/index">Home</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/stores/">Stores</a></li>
+                <li><a href="/users/:id">Profile</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section class="featured-products-section">
+          
+            <h2>Featured Products</h2>
+            <% @products.each do |product|%>
+            <div class="product-grid">
+                <div class="product-card">
+                   <!--  <img src="shoping.jpg" alt="Product 1"> -->
+
+                    <h3><%= product.name%></h3>
+                    <p><%= product.description%></p>
+                    <span class="price"><%= product.price%></span>
+                    <%= button_to "Add to Cart", new_cart_item_path(product_id: product.id), method: :get %>
+                </div>
+                <% end %>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My E-commerce Website. All Rights Reserved.</p>
+    </footer>
+    <%= javascript_include_tag "home_index" %>
+
+</body>
+</html>
 
 
 
-<ul>
+<!-- <ul>
 	<% @products.each do |product|%>
 		<li>
 	    <%= link_to product.name, product %> 
 	  </li>
 	<% end %> 
 </ul>
-<%= link_to "Add new product", new_product_path%> 
+<%= link_to "Add new product", new_product_path%>  -->

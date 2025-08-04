@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
+	skip_before_action :auhenticate_user, only: [:index]
 	def index
-    render "session/new"
+    @products = Product.all
 	end
 
 	def show

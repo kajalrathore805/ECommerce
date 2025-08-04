@@ -1,10 +1,62 @@
 
-<ul>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my Website</title>
+    <%= stylesheet_link_tag "home_index" %>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/home/index">ECommerce</a>
+            </div>
+            <ul>
+                <li><a href="/home/index">Home</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/users/:id">Profile</a></li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+       <section class="hero-section">
+       	<% @stores.each do |store|%>
+          <div class="hero-slider">
+            <div class="slide active">
+              <div class="hero-content">
+                <h1><%= link_to store.name, store %></h1>
+                <p><%= store.description%></p>
+                <button class="shop-now-button">Shop Now</button>
+              </div>
+              <img src="shoping.jpg" alt="Slide 1">
+            </div>
+            <% end %> 
+    	</section>
+  	</main>
+
+    <footer>
+        <p>&copy; 2025 My E-commerce Website. All Rights Reserved.</p>
+    </footer>
+    <%= javascript_include_tag "home_index" %>
+
+</body>
+</html>
+
+
+
+
+
+<!-- <ul>
 	<% @stores.each do |store|%>
 		<li>
 	    <%= link_to store.name, store %> 
 	  </li>
 	<% end %> 
 </ul>
-<%= link_to "Add new store" , new_store_path%> 
+<%= link_to "Add new store" , new_store_path%>  -->
 	

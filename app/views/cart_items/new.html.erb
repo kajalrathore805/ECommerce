@@ -13,29 +13,22 @@
 
 <div class="container d-flex justify-content-center mt-5">
   <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
-    <h2 class="text-dark mb-4 text-center">Product  form</h2>
+    <h2 class="text-dark mb-4 text-center">Cart Items  form</h2>
 	
-			<%= form_with  model: @product  do |form|%>
+			<%= form_with  model: @cart_item  do |form|%>
 				
 				<div class="mb-3">
-					<%= form.label :name%>
-					<%= form.text_field :name,class: "form-control"%>
+					<%= form.label :quantity%>
+					<%= form.text_field :quantity,class: "form-control"%>
 				</div>
-
+				<% @products.each do |product| %>
 				<div class="mb-3">
-				<%= form.label :description%>
-				<%= form.text_field :description,class: "form-control"%>
+					<%= form.hidden_field :product_id, value:product.id , class: "form-control"%>
 				</div>
-
+				<% end %>
 				<div class="mb-3">
-					<%= form.label :price%>
-					<%= form.text_field :price,class: "form-control"%>
-				</div>
-
-				<div class="mb-3">
-					<%= form.label :store_id%>
-					<%= form.collection_select :store_id, Store.order(:name) , :id,:name%>
-				</div>
+        <%= form.hidden_field :buyer_id, value:@current_user.id  %>
+        </div>
 
 			  <div class="mb-3">
 				<%= form.submit "Submit",class: "btn btn-success" %>

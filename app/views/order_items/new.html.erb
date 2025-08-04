@@ -5,7 +5,7 @@
     <%= form_with model: @order_item do |form| %>
       <div class="mb-3">
         <%= form.label :quantity %>
-        <%= form.number_field :quantity, id: 'quantity', class: "form-control" , onkeyup: "myfunc()" %>
+        <%= form.number_field :quantity, id: 'quantity',value: @order_item.cart_item&.quantity, class: "form-control" , onkeyup: "myfunc()" %>
       </div>
 
       <div class="mb-3">

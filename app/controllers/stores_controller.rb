@@ -1,10 +1,12 @@
 class StoresController < ApplicationController
+	skip_before_action :auhenticate_user, only: [:index]
 	def index
 		@stores = Store.all
 	end
 
 	def show
 		@store = Store.find(params[:id])
+		 @products = @store.products
 	end
 
 	def new

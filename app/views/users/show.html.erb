@@ -1,9 +1,21 @@
 
+<header>
+        <nav>
+            <div class="logo">
+                <a href="/home/index">ECommerce</a>
+            </div>
+            <ul>
+                <li><a href="/home/index">Home</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/stores/">Stores</a></li>
+                <li><%= link_to "Log out", session_path(@user), data:  { turbo_method: :delete,  turbo_confirm: "Are you sure?" } %></li>
+            </ul>
+        </nav>
+    </header>
 <div class="container d-flex justify-content-center mt-5">
   <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
     <h2 class="text-dark mb-4 text-center">Welcome <%= @user.full_name %> </h2>
       <%= form_with  do |form|%>
-
         <div class="mb-3 text-center">
           <% if @user.image.attached?%>
           <%= image_tag @user.image , class: "rounded-circle w-25"%>
@@ -31,7 +43,7 @@
                     turbo_confirm: "Are you sure?"
                   } ,class: "btn btn-secondary" %></li>
                 </ul>
-            <%= link_to "Log out", session_path(@user), data:  { turbo_method: :delete,  turbo_confirm: "Are you sure?" } %>
+            
       <% end %>
   </div>
 </div>

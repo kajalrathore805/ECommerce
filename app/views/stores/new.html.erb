@@ -1,47 +1,27 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand text-light" href="/home">ECOMMERCE</a>
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-light" href="">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active text-light" aria-current="page" href="/products">Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="/stores">Store</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="/users/:id">Profile</a>
-            </li>
-            
-            <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> -->
-          </ul>
-        </div>
+<header>
+  <nav>
+      <div class="logo">
+          <a href="/home/index">ECommerce</a>
       </div>
-</nav>
-
-
-
-
+      <ul>
+          <li><a href="/home/index">Home</a></li>
+          <li><a href="/products/new">Products</a></li>
+          <li><a href="/users/:id">Profile</a></li>
+      </ul>
+  </nav>
+</header>
 <div class="container d-flex justify-content-center mt-5">
   <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
     <h2 class="text-dark mb-4 text-center">Store Form</h2>
 
     <%= form_with model: @store do |form| %>
       <div class="mb-3">
-        <%= form.collection_select :seller_id, Seller.order(:full_name), :id, :full_name, {}, { class: "form-select" } %>
+        <%= form.hidden_field :seller_id, value:@current_user.id  %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :name %>
+        <%= form.label :Store_name %>
         <%= form.text_field :name, class: "form-control" %>
       </div>
 

@@ -1,7 +1,19 @@
 
+<% if @current_user&.type == "Buyer" %>
 
-<ul>
- <p><%= @store.name %></p>
+<h1><%= @store.name %> Products</h1>
+<% @products.each do |product| %>
+  <div class="product-card">
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p>₹<%= product.price %></p>
+    <%= button_to "Add to Cart", new_cart_item_path(product_id: product.id), method: :get %>
+  </div>
+<% end %>
+
+<% else %> 
+
+ <h3><%= @store.name %></h3>
    
 <p><%= @store.description %></p>
 
@@ -13,3 +25,4 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
                 </ul>
+<% end %>

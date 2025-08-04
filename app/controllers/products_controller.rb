@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	skip_before_action :auhenticate_user, only: [:index]
 	def index
 		@products = Product.all
 	end
@@ -7,14 +8,15 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
-	def new
-		@product = Product.new
-	end	
-
+	if @current_user == "Seller"
+		def new 
+			@product = Product.new
+		end	
+	end
+	
 	def create
 
 		@product = Product.new(product_params)
-		# byebug
 		if @product.save
 			redirect_to @product
 		else 
@@ -44,6 +46,6 @@ class ProductsController < ApplicationController
 
 	private
   def product_params
-    params.require(:product).permit(:name, :description, :price , :store_id , :sub_category_id)
+    params.require(:product).permit(:name, :description, :price , :store_id)
   end
 end
