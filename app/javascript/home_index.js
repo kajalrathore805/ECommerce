@@ -8,5 +8,5 @@
     slides[currentSlide].classList.add('active');
   }
 
-  setInterval(showNextSlide, 3000); // Change every 3 seconds
+  setInterval(showNextSlide, 2000); // Change every 3 seconds
 

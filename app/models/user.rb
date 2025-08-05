@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  scope :type_seller, -> {where(type:'Seller')}
+
 	has_secure_password
 	has_many :stores ,  dependent: :destroy
 	validates :type,:full_name,:email,:password,:phone, presence: true
@@ -26,5 +29,7 @@ class User < ApplicationRecord
     def normalize_name
       self.full_name = full_name.capitalize
     end
+
+
 end
 

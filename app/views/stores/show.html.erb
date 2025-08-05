@@ -1,5 +1,17 @@
 
 <% if @current_user&.type == "Buyer" %>
+<header>
+  <nav>
+      <div class="logo">
+          <a href="/home/index">ECommerce</a>
+      </div>
+      <ul>
+          <li><a href="/home/index">Home</a></li>
+          <li><a href="/users/:id">Profile</a></li>
+          <li><a href="/cart_items">Cart Item</a></li>
+      </ul>
+  </nav>
+</header>
 
 <h1><%= @store.name %> Products</h1>
 <% @products.each do |product| %>
@@ -7,7 +19,10 @@
     <h3><%= product.name %></h3>
     <p><%= product.description %></p>
     <p>₹<%= product.price %></p>
-    <%= button_to "Add to Cart", new_cart_item_path(product_id: product.id), method: :get %>
+    <%= link_to "Add to Cart", "/cart_items?quantity=1&product_id=#{product.id}", data:{ turbo_method: :post }, class: 'btn btn-success' %>
+
+    <%# <%= button_to "Add to Cart",  onclick: "alert('add-to-cart-button!'); return false;", method: :get %>
+
   </div>
 <% end %>
 
@@ -26,3 +41,16 @@
                   } %></li>
                 </ul>
 <% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const addToCartButton = document.getElementById('add-to-cart-button');
+ const  quantity = parseInt(document.getElementById('quantity').value);
+  if (addToCartButton) {
+    addToCartButton.addEventListener('click', function(event) { 
+      alert('Item added to cart!'); 
+    });
+  }
+});
+
+</script>
