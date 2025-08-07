@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_04_052352) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_07_032454) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -78,10 +78,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_04_052352) do
     t.integer "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "total_amount"
     t.integer "product_id"
-    t.integer "cart_item_id"
-    t.index ["cart_item_id"], name: "index_order_items_on_cart_item_id"
+    t.float "price"
+    t.float "total_amount"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -91,6 +90,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_04_052352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "buyer_id"
+    t.string "address"
+    t.string "total_price"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -148,7 +149,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_04_052352) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "order_items", "cart_items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users", column: "buyer_id"

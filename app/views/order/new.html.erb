@@ -1,0 +1,21 @@
+<h1>Review Your Cart</h1>
+
+<% @cart_items.each do |item| %>
+  <div>
+    <p><strong><%= item.product.name %></strong></p>
+    <p>Price: ₹<%= item.product.price %></p>
+    <p>Quantity: <%= item.quantity %></p>
+    <p>Subtotal: ₹<%= item.quantity * item.product.price %></p>
+  </div>
+<% end %>
+
+<h2>Total Price: ₹<%= @total_price %></h2>
+
+<%= form_with url: orders_path, method: :post do %>
+  <div>
+    <%= label_tag :address, "Shipping Address" %><br>
+    <%= text_field_tag :address, "", required: true %>
+  </div>
+
+  <%= submit_tag "Place Order", class: "btn btn-primary" %>
+<% end %>

@@ -11,3 +11,6 @@
 .byebug_history
 .env
 
+
+storage/*.sqlite3*
+

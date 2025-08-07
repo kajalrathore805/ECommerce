@@ -1,0 +1,17 @@
+<h1>Order Confirmation</h1>
+<p>Thank you for your order!</p>
+
+<p><strong>Order ID:</strong> <%= @order.id %></p>
+<p><strong>Total Price:</strong> ₹<%= @order.total_price %></p>
+<p><strong>Shipping Address:</strong> <%= @order.address %></p>
+
+<!-- <h2>Items:</h2>
+<% @order.order_items.each do |item| %>
+  <div>
+    <p><%= item.product.name %> (x<%= item.quantity %>) - ₹<%= item.price %> each</p>
+  </div>
+<% end %> -->
+
+
+<%= link_to "View Order Items", order_order_items_path(@order), class: "btn btn-info" %>
+
