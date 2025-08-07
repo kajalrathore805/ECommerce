@@ -19,17 +19,30 @@ class CartItemsController < ApplicationController
 	end
 
 	def create
-		@cart_item = current_user.cart_items.build(cart_item_params)
-		if @cart_item
-		  # @cart_item.increment(:quantity , by = 1)
-		  @cart_item.quantity =  @cart_item.quantity + 1
-		 end
-		if @cart_item.save
-			redirect_to cart_items_path
-		else 
-			render :new
-		end
-	end	
+  product_id = params[:product_id]
+  quantity = params[:quantity] || 1
+
+  @cart_item = current_user.cart_items.find_by(product_id: product_id)
+
+  if @cart_item
+    @cart_item.increment!(:quantity, quantity.to_i)
+  else
+    @cart_item = current_user.cart_items.build(cart_item_params)
+    unless @cart_item.save
+      render :new and return
+    end
+  end
+  redirect_to cart_items_path
+end
+
+	
+
+def destroy
+		@cart_item = CartItem.find(params[:id])
+		@cart_item.destroy
+
+		redirect_to cart_items_path
+	end
 
 private
 def cart_item_params

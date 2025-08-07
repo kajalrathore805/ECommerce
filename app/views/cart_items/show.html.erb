@@ -5,7 +5,13 @@
     <li>Quantity : <%= @cart_item.quantity%></li>
     <li>Price :  ₹<%= @product.price %></li>
     <li>Total :  ₹<%= @total_amount %></li>
-  </ul>
+		<li><%= link_to "Edit" , edit_cart_item_path(@cart_item)%></li>
+		<li><%= link_to "Delete" , cart_item_path(@cart_item), data: {
+		                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+                </ul>
+<%= button_to "Place Order", orders_path, method: :post, class: "btn btn-primary" %>
 
 
 

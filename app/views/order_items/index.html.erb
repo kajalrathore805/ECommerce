@@ -1,10 +1,13 @@
+<h1>Items in Order #<%= @order.id %></h1>
 
-<ul>
-	<% @order_items.each do |order_item|%>
-		<li>
-	    <%= link_to order_item.price, order_item %> 
-	  </li>
-	<% end %> 
-</ul>
-<%= link_to "new", new_order_item_path%> 
-	
+<% @order_items.each do |item| %>
+  <div class="order-item">
+    <p><strong>Product:</strong> <%= item.product.name %></p>
+    <p><strong>Quantity:</strong> <%= item.quantity %></p>
+    <p><strong>Price (each):</strong> ₹<%= item.price %></p>
+    <p><strong>Subtotal:</strong> ₹<%= item.quantity * item.product.price %></p>
+
+    <%= link_to "View Item", order_order_item_path(@order, item), class: "btn btn-outline-info" %>
+  </div>
+  <hr>
+<% end %>
