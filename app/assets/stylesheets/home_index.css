@@ -50,6 +50,48 @@ nav ul li a:hover {
     color: #ffd700; /* Gold color on hover */
 }
 
+/* product slider */
+
+ .slider-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .product-card {
+    flex: 0 0 33.33%; /* Adjust this value to show more or fewer items */
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  /* Disabled button style */
+  .slider-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 /* Hero Section */
 .hero-section {
   position: relative;

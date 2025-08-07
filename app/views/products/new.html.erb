@@ -1,16 +1,5 @@
 
-<header>
-  <nav>
-      <div class="logo">
-          <a href="/home/index">ECommerce</a>
-      </div>
-      <ul>
-          <li><a href="/home/index">Home</a></li>
-          <li><a href="/users/:id">Profile</a></li>
-          <li><a href="/products">Products</a></li>
-      </ul>
-  </nav>
-</header>
+ <%= render  "shared/seller_nav"%>
 
 <div class="container d-flex justify-content-center mt-5">
   <div class="p-4 border rounded shadow bg-white" style="min-width: 400px;">
@@ -35,7 +24,7 @@
 
 				<div class="mb-3">
 					<%= form.label :store_id%>
-					<%= form.collection_select :store_id, Store.order(:name) , :id,:name%>
+					<%= form.collection_select :store_id, @current_user.stores.order(:name) , :id,:name%>
 				</div>
 
 			  <div class="mb-3">

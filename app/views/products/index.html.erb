@@ -1,47 +1,27 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to my Website</title>
-    <%= stylesheet_link_tag "home_index" %>
-
-</head>
+<% if @current_user&.type == "Buyer" %>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="/home/index">ECommerce</a>
-            </div>
-            <ul>
-                <li><a href="/home/index">Home</a></li>
-                <li><a href="/products/">Products</a></li>
-                <li><a href="/stores/">Stores</a></li>
-                <li><a href="/users/:id">Profile</a></li>
-
-            </ul>
-        </nav>
-    </header>
+  <%= stylesheet_link_tag "home_index" %>
+    <%= render  "shared/buyer_header"%>
     <main>
 
-        <section class="featured-products-section">
-          
-            <h2>Featured Products</h2>
-            <% @products.each do |product|%>
-            <div class="product-grid">
-                <div class="product-card">
-                   <!--  <img src="shoping.jpg" alt="Product 1"> -->
-
-                    <h3><%= product.name%></h3>
-                    <p><%= product.description%></p>
-                    <span class="price"><%= product.price%></span>
-                    <%= button_to "Add to Cart",  cart_items_path(product_id: product.id), method: :post %>
-                </div>
-                <% end %>
-            </div>
-            
-        </section>
+      <section class="featured-products-section">
+        <h2>Featured Products</h2>
+        <div class="slider-container">
+          <button class="slider-btn prev-btn">Previous</button>
+          <div class="product-slider">
+            <% @products.each do |product| %>
+              <div class="product-card">
+                <%# Add your image tag here %>
+                <h3><%= product.name %></h3>
+                <p><%= product.description %></p>
+                <span class="price"><%= product.price %></span>
+                <%= link_to "Add to Cart", "/cart_items?quantity=1&product_id=#{product.id}", data: { turbo_method: :post }, class: 'btn btn-success' %>
+              </div>
+            <% end %>
+          </div>
+    <button class="slider-btn next-btn">Next</button>
+  </div>
+</section>
     </main>
 
     <footer>
@@ -50,15 +30,19 @@
     <%= javascript_include_tag "home_index" %>
 
 </body>
-</html>
 
+<% else %>
 
+ <%= render  "shared/seller_nav"%>
+<h2>My Products</h2>
+ <ul>
 
-<!-- <ul>
 	<% @products.each do |product|%>
 		<li>
 	    <%= link_to product.name, product %> 
 	  </li>
 	<% end %> 
 </ul>
-<%= link_to "Add new product", new_product_path%>  -->
+<%= link_to "Add new product", new_product_path%> 
+
+<% end %>

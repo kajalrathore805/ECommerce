@@ -11,10 +11,10 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="/home/index">ECommerce</a>
+                <a href="/">ECommerce</a>
             </div>
             <ul>
-                <li><a href="/home/index">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/products/">Products</a></li>
                 <li><a href="/stores/">Stores</a></li>
                 <li><a href="/users/new">Register</a></li>
@@ -23,18 +23,21 @@
         </nav>
     </header>
     <main>
-       <section class="hero-section">
+      <section class="hero-section">
+        <% @stores.each do |store|%>
           <div class="hero-slider">
             <div class="slide active">
               <div class="hero-content">
-                <h1>Welcome to Our Store</h1>
-                <p>Shop the latest products and best deals</p>
+                <h1><%= link_to store.name, store %></h1>
+                <p><%= store.description%></p>
                 <button class="shop-now-button">Shop Now</button>
               </div>
               <img src="shoping.jpg" alt="Slide 1">
             </div>
+            <% end %> 
+      </section>
 
-            <div class="slide">
+           <%#  <div class="slide">
               <div class="hero-content">
                 <h1>Big Discounts</h1>
                 <p>Up to 50% off on selected products</p>
@@ -50,28 +53,29 @@
                 <button class="shop-now-button">Discover</button>
               </div>
               <img src="shoping.jpg" alt="Slide 3">
-            </div>
-          </div>
-    </section>
+            </div> %>
+          <%# </div>
+    </section> %>
 
 
         <section class="featured-products-section">
-          
-            <h2>Featured Products</h2>
-            <% @products.each do |product|%>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="shoping.jpg" alt="Product 1">
-
-                    <h3><%= product.name%></h3>
-                    <p><%= product.description%></p>
-                    <span class="price"><%= product.price%></span>
-                    <button>Add to Cart</button>
-                </div>
-                <% end %>
-            </div>
-            
-        </section>
+        <h2>Featured Products</h2>
+        <div class="slider-container">
+          <button class="slider-btn prev-btn">Previous</button>
+          <div class="product-slider">
+            <% @products.each do |product| %>
+              <div class="product-card">
+                <%# Add your image tag here %>
+                <h3><%= product.name %></h3>
+                <p><%= product.description %></p>
+                <span class="price"><%= product.price %></span>
+                <%= link_to "Add to Cart", "/cart_items?quantity=1&product_id=#{product.id}", data: { turbo_method: :post }, class: 'btn btn-success' %>
+              </div>
+            <% end %>
+          </div>
+    <button class="slider-btn next-btn">Next</button>
+  </div>
+</section>
     </main>
 
     <footer>

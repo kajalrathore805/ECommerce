@@ -1,3 +1,7 @@
+
+
+<%= render  "shared/buyer_header"%>
+
 <h1>Review Your Cart</h1>
 
 <% @cart_items.each do |item| %>
@@ -16,6 +20,6 @@
     <%= label_tag :address, "Shipping Address" %><br>
     <%= text_field_tag :address, "", required: true %>
   </div>
-
+  <br>
   <%= submit_tag "Place Order", class: "btn btn-primary" %>
 <% end %>

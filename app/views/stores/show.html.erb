@@ -1,17 +1,6 @@
 
 <% if @current_user&.type == "Buyer" %>
-<header>
-  <nav>
-      <div class="logo">
-          <a href="/home/index">ECommerce</a>
-      </div>
-      <ul>
-          <li><a href="/home/index">Home</a></li>
-          <li><a href="/users/:id">Profile</a></li>
-          <li><a href="/cart_items">Cart Item</a></li>
-      </ul>
-  </nav>
-</header>
+<%= render  "shared/buyer_header"%>
 
 <h1><%= @store.name %> Products</h1>
 <% @products.each do |product| %>
@@ -27,6 +16,7 @@
 <% end %>
 
 <% else %> 
+<%= render  "shared/seller_nav"%>
 
  <h3><%= @store.name %></h3>
    
@@ -42,15 +32,4 @@
                 </ul>
 <% end %>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const addToCartButton = document.getElementById('add-to-cart-button');
- const  quantity = parseInt(document.getElementById('quantity').value);
-  if (addToCartButton) {
-    addToCartButton.addEventListener('click', function(event) { 
-      alert('Item added to cart!'); 
-    });
-  }
-});
 
-</script>

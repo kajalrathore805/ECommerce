@@ -1,3 +1,7 @@
+
+
+<%= render  "shared/buyer_header"%>
+
 <h2>Order Confirmation</h2>
 
 <p><strong>Order ID:</strong> <%= @order.id %></p>
@@ -18,8 +22,12 @@
         <td><%= item.product.name %></td>
         <td><%= item.quantity %></td>
         <td>₹<%= item.price %></td>
-        <td>₹<%= item.total_amount %></td>
+        <td>₹<%= item.quantity* item.price%></td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
+<%= link_to "View Order Items", order_order_items_path(@order), class: "btn btn-info" %>
+
+

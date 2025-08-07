@@ -1,21 +1,17 @@
 class CartItemsController < ApplicationController
 	def  index
 		@cart_items = current_user.cart_items
+
 	end
 
 	def show
 		@cart_item = current_user.cart_items.find(params[:id])
-		 @product = @cart_item.product
-		 @total_amount = total_amount
+		@product = @cart_item.product
 	end
 
 	def new
 		@cart_item = CartItem.new
 		
-	end
-
-	def total_amount
-		@cart_item.quantity*@product.price
 	end
 
 	def create
@@ -34,8 +30,6 @@ class CartItemsController < ApplicationController
   end
   redirect_to cart_items_path
 end
-
-	
 
 def destroy
 		@cart_item = CartItem.find(params[:id])

@@ -1,11 +1,15 @@
 class StoresController < ApplicationController
 	skip_before_action :auhenticate_user, only: [:index]
 	def index
-		@stores = Store.all
+		if @current_user&.type == "Buyer"
+		 @stores = Store.all
+		else
+		@stores = current_user.stores
+	  end
 	end
 
 	def show
-		@store = Store.find(params[:id])
+		@store = current_user.stores.find(params[:id])
 		 @products = @store.products
 	end
 
@@ -14,7 +18,7 @@ class StoresController < ApplicationController
 	end
 
 	def create
-		@store = Store.new(store_params)
+		@store = current_user.stores.build(store_params)
 
 		if @store.save
 			redirect_to @store
@@ -24,11 +28,11 @@ class StoresController < ApplicationController
 	end
 
 	def edit
-		@store = Store.find(params[:id])
+		@store = current_user.stores.find(params[:id])
 	end
 
 	def update
-		@store = Store.find(params[:id])
+		@store = current_user.stores.find(params[:id])
 		if @store.update(store_params)
 			redirect_to (@store)
 		else
@@ -37,7 +41,7 @@ class StoresController < ApplicationController
 	end
 
 	def destroy
-		@store = Store.find(params[:id])
+		@store = current_user.stores.find(params[:id])
 		@store.destroy
 
 		redirect_to stores_path

@@ -1,7 +1,44 @@
-<% @cart_items.each do |cart_item|%>
+ <%= render  "shared/buyer_header"%>
 
-	<li>
-        <%= link_to cart_item.quantity, cart_item_path(cart_item) %>
-      </li>
-	<% end %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+      <th>View Details</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @cart_items.each do |cart_item|%>
+      <tr>
+        <td><%= cart_item.product.name %></td>
+        <td><%= link_to cart_item.quantity, cart_item_path(cart_item) %></td>
+        <td>₹<%= cart_item.product.price %></td>
+        <td>₹<%= cart_item.quantity*cart_item.product.price %></td>
+        <td><%= button_to "View Item", cart_item_path(cart_item), method: :get, class: "btn btn-primary" %></td>
+        <td><%= link_to "Delete" ,"/cart_items/#{cart_item.id}", data: {
+              turbo_method: :delete,turbo_confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+    <tr>
+    	<td></td>
+    	<td>Total Quantity : <%=@cart_items.sum { |item| item.quantity}%></td>
+    	<td></td>
+    	<td>Total Amount : <%=@cart_items.sum { |item| item.quantity * item.product.price }%></td>
+    </tr>
+  </tbody>
+
+</table>
+<%# 
+<% @cart_items.each do |cart_item|%>
+	<%# <ul>
+    <li>Quantity : <%= link_to cart_item.quantity, cart_item_path(cart_item) %></li>
+        
+   <%#  <li>Product name : <%= cart_item.product.name %></li>
+    <%# <li>Price :  ₹<%= cart_item.product.price %></li>
+    <%# <li>Total :  ₹<%=cart_item.quantity*cart_item.product.price %></li>
+	<%# <% end %
+</ul> %>

@@ -1,4 +1,4 @@
-
+<%= render  "shared/buyer_header"%>
 
   <ul>
     <li>name : <%= @product.name %></li>
@@ -7,11 +7,11 @@
     <li>Total :  ₹<%= @total_amount %></li>
 		<li><%= link_to "Edit" , edit_cart_item_path(@cart_item)%></li>
 		<li><%= link_to "Delete" , cart_item_path(@cart_item), data: {
-		                    turbo_method: :delete,
+		                turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
                 </ul>
-<%= button_to "Place Order", orders_path, method: :post, class: "btn btn-primary" %>
+<%= button_to "Order now", new_order_path, method: :get, class: "btn btn-primary" %>
 
 
 
