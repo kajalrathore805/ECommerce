@@ -17,7 +17,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'bcrypt', '~> 3.1.13' # Or the latest stable version
+gem 'bcrypt', '~> 3.1.21' # Or the latest stable version
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
